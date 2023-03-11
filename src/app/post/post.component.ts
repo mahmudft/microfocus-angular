@@ -54,7 +54,7 @@ export class PostComponent implements OnInit {
   }
 
   addPost(): void {
-    const post = { userId: this.id, ...this.postForm.getRawValue() };
+    const post = { userId: this.user?.id, ...this.postForm.getRawValue() };
     this.posts.createPost(post).subscribe(res => {
       this.router.navigate([
         '/'],
