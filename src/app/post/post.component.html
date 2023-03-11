@@ -1,0 +1,55 @@
+<div *ngIf="user">
+  <nav class="navbar common-padding align-items-baseline">
+    <div class="nav-base">
+      <p class="navbar-title">{{ id ? "Edit Post" : "New Post" }}</p>
+    <a class="text-decoration-none" routerLink="">Go back to Home Page</a>
+    </div>
+    <span class="justify-content-end">Welcome, {{ user['name'] }}</span>
+  </nav>
+  <form class="common-padding" [formGroup]="postForm">
+    <div class="form-group mb-4">
+      <label class="fw-bold" for="title">Title: </label>
+      <input
+        class="form-control"
+        [ngStyle]="{'border': (title?.errors) ? '3px solid red': null}"
+        id="title"
+        type="text"
+        formControlName="title"
+      />
+      <small *ngIf="title?.errors" id="emailHelp" class="form-text float-right text-danger">
+        {{title?.errors?.['required'] ? "* Field is required" : "* Message can't exceed more than 200 characters"}}</small>
+    </div>
+    <div class="form-group mb-4">
+      <label class="fw-bold" for="body">Message: </label>
+      <textarea [ngStyle]="{'border': (body?.errors) ? '3px solid red' : null}" rows="4" class="form-control" id="body" formControlName="body"></textarea>
+      <small *ngIf="body?.errors" class="form-text float-right text-danger">{{body?.errors?.['required'] ? "* Field is required" : "* Message can't exceed more than 2000 characters"}}</small
+      >
+    </div>
+    <div class="button-group">
+      <div class="float-left">
+        <button
+        *ngIf="id"
+        class="btn btn-secondary btn-sm rounded-pill p-2 mr-auto"
+        (click)="deletePost()"
+      >
+        Delete
+      </button>
+    </div>
+      <div class="sub-button-group float-right">
+      <button
+        class="btn btn-secondary btn-sm rounded-pill p-2"
+        (click)="cancelOp()"
+      >
+        Cancel
+      </button>
+       <button
+       [disabled] ="(body?.errors || title?.errors) ? true : false"
+        class="btn btn-secondary btn-sm rounded-pill mr-1 p-2"
+        (click)="id ? editPost() : addPost()"
+      >
+        Save
+      </button>
+    </div>
+    </div>
+  </form>
+</div>
