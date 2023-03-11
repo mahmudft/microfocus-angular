@@ -1,0 +1,52 @@
+table, th, td {
+  border: 3px solid black;
+}
+
+.pagination-button{
+    border: none;
+}
+
+.shaped {
+    width: 120px;
+}
+
+.common-margin{
+    margin: 10px 50px 10px 50px;
+}
+
+.right-nav-menu{
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+}
+
+
+thead > tr{
+    background-color: lightgray;
+}
+nav {
+    padding-left: 50px;
+    padding-right: 50px;
+    border: 3px solid lightgray;
+}
+/* nav {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    border: 4px solid lightgray;
+
+} */
+
+.pagination{
+    display: flex;
+    justify-content: flex-end;   
+}
+.alert-message{
+    color: green;
+    font-weight: 500;
+    font-size: 24px; 
+}
+nav > p {
+    font-size: 20px;
+    font-weight: 500;
+}

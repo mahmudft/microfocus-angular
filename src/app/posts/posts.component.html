@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light justify-content-between">
+  <p>Home</p>
+  <form class="form-inline">
+    <div class="right-nav-menu" *ngIf="user; else elseBlock">
+      <span class="ml-2 mr-2">Welcome, {{ user.name }}</span>
+      <button class="btn btn-secondary btn-sm rounded-pill ml-2 mr-2 shaped" (click)="newPost()">New Post</button>
+      <button class="btn btn-secondary btn-sm rounded-pill ml-2 mr-2 shaped" (click)="logout()">Logout</button>
+    </div>
+    <ng-template #elseBlock>You are not logged in,
+      <button class="btn btn-secondary btn-sm rounded-pill ml-2 mr-2 shaped" (click)="login()">Login</button></ng-template>
+  </form>
+</nav>
+<div class="alert-message common-margin" *ngIf="state?.message">{{ state?.message }}</div>
+<div class="common-margin">
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Post</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let post of test">
+    <tr>
+      <th scope="row">
+        <p>{{ post.user?.name }}</p>
+        <a href="https://www.{{post?.user?.website}}" target="_blank">{{ post?.user?.company?.['name'] }}</a>
+      </th>
+      <td>
+        <div *ngIf="post?.user?.username == user?.username; else elseBlock">
+          <a routerLink="/post/{{ post.id }}">{{ post.title }}</a>
+        </div>
+        <ng-template #elseBlock>
+          <h5 #elseBlock>{{ post.title }}</h5>
+        </ng-template>
+        <p>{{ post.body }}</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="pagination common-margin">
+  <button class="pagination-button" [disabled]="moveBack" (click)="onPrev()"><i class="bi bi-caret-left-fill"></i></button>
+  <button class="pagination-button" [disabled]="moveForward" (click)="onNext()">  <i class="bi bi-caret-right-fill"></i></button>
+</div>
