@@ -1,0 +1,29 @@
+<nav class="fw-bold box-format">Log In</nav>
+<div class="input-area lh-lg">
+  <label class="fw-bold">
+    User Name
+    <input
+      type="text"
+      [ngStyle]="{'border': (message) ? '3px solid red' : null}"
+      id="name"
+      name="name"
+      class="form-control"
+      required
+      [(ngModel)]="username"
+      #name="ngModel"
+    />
+  </label>
+  <div>
+  <button
+    [disabled]="!username?.length"
+    (click)="check()"
+    type="button"
+    class="btn btn-sm rounded-pill mt-2"
+  >
+    Login
+  </button>
+</div>
+  <div *ngIf="message" class="text-danger fw-bold">
+    {{ message }}
+  </div>
+</div>

@@ -1,0 +1,23 @@
+nav {
+    border-bottom: 5px solid lightgray;
+    border-top: 5px solid lightgray;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+.box-format{
+    padding: 1px 20px 1px 20px;
+}
+
+.input-area {
+    display: flex;
+    flex-direction: column;
+    margin: 20% 30%;
+}
+
+button {
+    display: relative;
+    background-color: lightgray;
+    float: right;
+    width: 100px;
+}
